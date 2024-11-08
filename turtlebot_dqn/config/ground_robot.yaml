@@ -1,0 +1,110 @@
+# All-In-One Configuration File
+# --------------------------------------------- #
+# New Update for Turtlebot3 Waffle_Pi           #
+# Max linear velocity: [-0.26, 0.26]            #
+# Max angular velocity: [-1.82, 1.82]           #
+# --------------------------------------------- #
+
+# Overal Turtlebot Configuration
+max_v: 0.25
+max_w: 1.82
+
+# *_discrete: how many discrete parts will be divided
+v_discrete: 2 
+w_discrete: 11
+
+# Data Collection Phase
+data_folder: './dataset_risk/dataset_ros_risk_3obs'
+world_model_sdf: '../catkin_ws/src/turtlebot3/turtlebot3_gazebo/models/turtlebot3_world/model_3_obs_gazebo.sdf'
+padding_perc: 0.15  # The percentage you want to pad the obstacle
+ws_size: 1.5 # workspace_size / 2 (Say the wall is 4*4 m^2, then the ws_size is 2)
+goal_nums: 12 # number of discrete grid in square root
+agent_size: 0.22  # radius of turtlebot
+bias_fail_tolerance: 0.01  # min_fail_rate + bias_fail_tolerance = final_threshold
+uncertain_measure_times: 10
+data_run_times: 20  # number of runs to try before collecting each data
+data_collect_goal_change: 4000  # change to new goal after # data collected
+use_lab_noise_setup: False
+
+# Biased-NN Training Phase
+sample_rate: 1  # how often the robot is updated
+bias_input: 5  # [x, y, theta, goal_x, goal_y]
+bias_batch: 256
+bias_eval: 10
+bias_epochs: 100
+bias_lr: 0.001
+bias_lr_scheduler_step: 100   # not in use
+bias_lr_scheduler_gamma: 0.9  # not in use
+bias_output_folder: './output'
+bias_net_dim:
+- 2048
+- 1024
+
+# RL-agent Training Phase
+ltl_task: "<>goal_1 && <>goal_4 && (!goal_4 U goal_1) && []<>goal_2 && []<>goal_3 && []!obstacles"
+selected_bias_folder: "./output/model_3obs"
+selected_bias_model: 'model_epoch_800.pth'
+max_episode_steps: 500  # Maximum number of seconds per episode
+max_eval_steps: 300 # evaluate within gazebo
+robot_dim: 3
+action_dim: 2
+dqn_buffer_size: 1000000
+dqn_hidden: 2048
+rl_lr: 0.0001 # learning rate
+rl_eval_freq: 5000
+rl_max_episodes: 120000
+discount_factor: 0.99
+dqn_batch: 256
+
+pure_dqn_epsilon: 
+- 1 # init 
+- 0.02 # min
+- 120000
+
+epsilon: # epsilon will match with delta if it decays faster
+- 1 # init
+- 0.02 # min value 
+- 120000  # epsilon_decay_steps
+delta: 
+- 0.6 # init
+- 0.98 # max value + eps_min = 1
+- 120000 # delta_grow_steps
+obstacle_list:  # add more elements if needed
+- 'wall_1'
+- 'wall_2'
+- 'wall_3'
+- 'wall_4'
+- 'obs_1'
+- 'obs_2'
+- 'obs_3'
+- 'obs_4'
+# - 'obs_5'
+# - 'obs_6'
+# - 'obs_7'
+# - 'obs_8'
+# - 'obs_9'
+# - 'obs_10'
+
+RL_RUNTIME: 5000 # use this for standard_dqn as maximum training time ( in minutes )
+BIASNN_RUNTIME: 482  # search for ./output to look up ( in minutes )
+# 3 obs:  482
+# 10 obs: 625
+# lab :   236
+
+
+dqn_train_signal: 5000 # start DQN training after # episodes; delta_decay_steps = dqn_train_signal
+target_update: 300000 # hard update
+reward_clip: True # limit the reward to [-1, 1] when updating DQN
+use_soft_update: False # Use soft update to train DQN
+dqn_tau: 0.005  # soft update the target network
+run_eval_in_rl: False  # turn of running in gazebo to save time for some purpose
+
+# Visualization 
+vis_folder: "./rl_model/[IROS]test_lab_dqn_10obs_full_compensate"
+vis_model: "dqn_agent_epi_200000.pth"
+vis_max_allowed_step: 500
+
+# Check BiasedNN performance
+biasnn_model_folder: './output/model_10obs'
+biasnn_model: 'model_epoch_800.pth'
+check_max_allowed_step: 600
