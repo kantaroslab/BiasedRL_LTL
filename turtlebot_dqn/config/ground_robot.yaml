@@ -15,7 +15,7 @@ w_discrete: 11
 
 # Data Collection Phase
 data_folder: './dataset_risk/dataset_ros_risk_3obs'
-world_model_sdf: '../catkin_ws/src/turtlebot3/turtlebot3_gazebo/models/turtlebot3_world/model_3_obs_gazebo.sdf'
+world_model_sdf: '../turtlebot3_world/model_3_obs_gazebo.sdf'
 padding_perc: 0.15  # The percentage you want to pad the obstacle
 ws_size: 1.5 # workspace_size / 2 (Say the wall is 4*4 m^2, then the ws_size is 2)
 goal_nums: 12 # number of discrete grid in square root

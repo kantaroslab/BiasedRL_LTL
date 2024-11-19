@@ -1,0 +1,275 @@
+<sdf version='1.5'>
+    <!-- Draw Circle -->
+    <model name='ros_symbol'>
+      <static>1</static>
+      <link name='symbol'>
+      
+      <visual name="obs_shoerack">
+      <pose>2 2 0 0 0 0</pose>
+	    <geometry>
+          <mesh>
+            <uri>model://turtlebot3_world/meshes/aws_ShoeRack_01_visual.DAE</uri>
+          </mesh>
+        </geometry>
+      <meta> <layer> 1 </layer></meta>
+	</visual>
+
+	<visual name="obs_trash">
+	<pose>-2 -2 0 0 0 0</pose>
+	<geometry>
+          <mesh>
+            <uri>model://turtlebot3_world/meshes/aws_Trash_01_visual.DAE</uri>
+          </mesh>
+        </geometry>
+      	<meta> <layer> 1 </layer></meta>
+	</visual>
+	
+	<visual name="obs_chair1">
+      <pose>0.8 0 0 0 0 0</pose>
+	    <geometry>
+          <mesh>
+            <uri>model://turtlebot3_world/meshes/aws_ChairD_01_visual.DAE</uri>
+          </mesh>
+        </geometry>
+      <meta> <layer> 1 </layer></meta>
+	</visual>
+
+	<visual name="obs_chair2">
+      <pose>-2 1 0 0 0 0</pose>
+	    <geometry>
+          <mesh>
+            <uri>model://turtlebot3_world/meshes/aws_ChairD_01_visual.DAE</uri>
+          </mesh>
+        </geometry>
+      <meta> <layer> 1 </layer></meta>
+	</visual>
+      
+      <visual name="obs_table1">
+      <pose>0 2 0 0 0 0</pose>
+	    <geometry>
+          <mesh>
+            <uri>model://turtlebot3_world/meshes/aws_CoffeeTable_01_visual.DAE</uri>
+          </mesh>
+        </geometry>
+      <meta> <layer> 1 </layer></meta>
+	</visual>
+
+	<collision name="obs_bed">
+      	<pose>1 -2 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>2.05 2.05 1.0</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+      </collision>
+
+	<visual name="obs_bed">
+	<pose>1 -2 0 0 0 -3.14</pose>
+	    <geometry>
+          <mesh>
+            <uri>model://turtlebot3_world/meshes/aws_Bed_01_visual.DAE</uri>
+          </mesh>
+        </geometry>
+      <meta> <layer> 1 </layer></meta>
+	</visual>
+
+      	<visual name='goal_1'>
+          <pose>-2 2 0 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.08</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
+        </visual>
+        
+        <visual name='goal_2'>
+          <pose>-0.1 -0.7 0 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.08</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
+        </visual>
+        
+        <visual name='goal_3'>
+          <pose>-1 -1 0 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.08</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
+        </visual>
+
+		
+	<!-- Draw Walls -->
+      	<collision name="wall_1">
+      	<pose>3 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 6.0 3.0</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+      </collision>
+      
+      <visual name="wall_1">
+      <pose>3 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 6.0 3.0</size>
+          </box>
+        </geometry>
+        <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/White</name>
+            </script>
+        </material>
+      </visual>
+      
+      <collision name="wall_2">
+      	<pose>-3 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 6.0 3.0</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+      </collision>
+      
+      <visual name="wall_2">
+      	<pose>-3 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 6.0 3.0</size>
+          </box>
+        </geometry>
+        <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/White</name>
+            </script>
+        </material>
+      </visual>
+      
+      <collision name="wall_3">
+      	<pose>0 3 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>6.0 0.01 3.0</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+      </collision>
+      
+      <visual name="wall_3">
+      	<pose>0 3 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>6.0 0.01 3.0</size>
+          </box>
+        </geometry>
+        <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/White</name>
+            </script>
+        </material>
+      </visual>
+      
+      <collision name="wall_4">
+      	<pose>0 -3 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>6.0 0.01 3.0</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+      </collision>
+      
+      <visual name="wall_4">
+      	<pose>0 -3 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>6.0 0.01 3.0</size>
+          </box>
+        </geometry>
+        <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/White</name>
+            </script>
+        </material>
+      </visual>
+	
+        
+    </link>
+  </model>
+</sdf>

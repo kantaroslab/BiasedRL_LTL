@@ -2,7 +2,7 @@
 
 To get your own dataset:
 
-* Collect data: `python3 ros_data_collect.py`
+* Collect data: `python3 risk_aware_data_collect.py`
 * Train BiasedNN: `python3 nntrain_softmax.py`
 
 To run the ground robot (Turtlebot3 Waffle Pi), please run the code accordingly
