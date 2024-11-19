@@ -31,6 +31,10 @@ high variance area:
 the path that connects goal 1 and goal 2 (where the robot is currently located) will have very high variance, which means theoretically the car might have a high chance to crash into the obstacles if you want to go directly from goal 1 to goal 2 via the straight path
 ```
 
+## Notice
+
+Default configuraion is targeted for Task 4: <>goal_1 && <>goal_2 && (!goal_2 U goal_1) && <>goal_3 && []!obstacles with 3 obstacle environment
+
 ## Notes
 
 To setup Turtlebot3 in the lab, please check this photo
